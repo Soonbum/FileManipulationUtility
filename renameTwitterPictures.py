@@ -30,6 +30,8 @@ def folder_select():
             for file in res:
                 old_file = os.path.join(dir_path, file)                 # 원본 파일의 경로명/파일명
                 new_filename = file.split(sep='-', maxsplit=2)          # 하이픈 2개까지만 문자열 나눔
+                if len(new_filename) != 3:                              # new_filename의 길이가 3이 아니면 break
+                    continue
                 new_file = os.path.join(dir_path, new_filename[-1])     # 날짜_시간 이름만 남기도록 파일명 변경
                 if not os.path.exists('@' + new_filename[0]):           # 계정 이름으로 된 폴더 생성하기
                     os.makedirs('@' + new_filename[0])
